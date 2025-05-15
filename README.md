@@ -19,5 +19,4 @@ This project is an AI-powered desktop application designed to detect network int
 2. Install required libraries using `pip install -r requirements.txt`
 3. Run the main application file
 
-## Author
-Laiba Batool
+
