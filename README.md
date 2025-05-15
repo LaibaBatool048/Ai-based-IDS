@@ -11,7 +11,7 @@ This project is an AI-powered desktop application designed to detect network int
 ## Technologies Used
 - Python
 - Scikit-learn (Machine Learning)
-- Tkinter (GUI)
+- PyQt, Qt Designer (GUI)
 - Scapy (Network packet handling)
 
 ## How to Run
