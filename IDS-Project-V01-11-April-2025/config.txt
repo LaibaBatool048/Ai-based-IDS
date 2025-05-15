@@ -1,0 +1,1 @@
+{"font_size": "Large", "sensitivity": "High", "popup_notifications": true, "sound_alerts": true}

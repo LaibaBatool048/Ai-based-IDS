@@ -1,0 +1,64 @@
+READ CAREFULLY AND FOLLOW EACH STEP:
+
+--> Setup: 
+1) You must install the following softwares in order to run this project:
+         i) Npcap
+         ii) Python language
+   Executable setups are inside project/setup folder.
+
+2) Extract all the files in a single folder and Open it inside VS Code.
+3) Run this command in the terminal to create a virtual environment:
+                 python -m venv venv
+(Note: Run 'Set-ExecutionPolicy Unrestricted -Force' wihtout quotes in Windows PowerShell Administrartor if System says execution of scripts is disabled )
+4) Activate the environment by typing this:
+                 venv\scripts\activate
+5) Install all the libraries and dependencies using requirements.txt file by typing the following command:
+                 pip install -r requirements.txt
+After performing all these steps, the setup is completed and project is ready to use.
+
+
+--> Changes that are required inside codes and functions:
+1) The IDS monitors traffic from specified network interface only, so you must write interface's name inside this file:
+       mainscreen/monitoring_controller.py line no 109 iface=""
+       You can check active interfaces by typing 'ipconfig /all' inside command prompt on windows.
+
+2) This IDS can only detect attacks that have same features as dataset that was used for training, so run the attack.py file in order to simulate attacks.
+   (Run the attack simulation from another Pc for effective attacks, Replace Target IP with your PC's Ip in attacks.py file. Make sure that both the pcs are connected to same network.)
+
+3) Detection Thresholds of attacks are written inside monitoring.py file lines no 31,32,33. You can adjust them according to your desire.
+   Also with currrent setting, it will only trigger warning if more than 10 malicious packets are detected in 60 seconds.
+   So you can also change these in monitorig.py file lines no 181,182.
+
+
+--> Usage:
+You can simply run the project by runnning main.py file. After that you can create the account on Signup Page (signup.py) and Login (login_page.py) it.
+On the main interface, You will See Menu on the left Side and Descriptions on Main Page.
+
+1) Home page --> For switching between pages. (main_page.py)
+2) Dashboard  --> For starting and stopping Monitoring. (main_page.py)
+3) Notifications --> Detected attacks will appear here. (notifications.py)
+4) Reports --> To generate excel or pdf reports. (report.py)
+5) Setting --> For customizing font size, senstivity or enabling pop ups, sound etc. (setting.py)
+6) Logout --> For exiting.
+
+Other files:
+1) forget.py --> It will be used to change username or password.
+2) training.py --> It was used for training model, you can also use this to train model again with different specifications.
+3) attacks.py --> It will be used for simulating attacks on network.
+4) config.txt --> It contains the setting preferences.
+5) requirements.txt --> It contains all the libraries and dependencies. It will be used for installation.
+6) IDS.db --> Its the SQLite database that will store information related to project.
+7) frontpage.ui --> It is the interface file designed using QT Designer. It can be edited in the designer not through coding.
+8) images.py & resources.py --> These are just resource files. Editing them can affect the interface.
+9) session.py --> It will store the details of current logged in account.
+10) monitoring.py & monitoring_controller.py --> These will load the model, monitor traffic and predict result.
+11) graph.py --> This file will display the real time graph on the dashboard.
+
+--> Issues you may face:
+1) When 'start monitoring' button is clicked, three processes start in background in multiple threads so you may encounter lagging and 'not responding' warning. But still, it will continue to monitor the traffic.
+2) If wrong network interface is selected, it will not detect real-time traffic from active interface.
+3) Detection sensitivity must be used according to traffic features, it will not detect attacks if sensitivity is too low.
+4) It cannot detect attacks other than those who have same features as dataset KDD99 and used for training.
+5) Turn off the private firewall from the setting if packets are not being captured. Sometimes it blocks the malicious packets.
+6) Use ping <target_ip> to check connectivity between both pcs.
+7) If files do not load any resource or image, check the paths and update them according to your pc's locations.
